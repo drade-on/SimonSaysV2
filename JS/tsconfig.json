@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "watch": true,
+    "allowJs": true,
+    "checkJs": true,
+    "lib": ["dom", "esnext"]
+  }
+}

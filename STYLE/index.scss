@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin center-self {
+    align-self: center;
+    justify-self: center;
+}
+
+@mixin dim($value) {
+    width: $value;
+    height: $value;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+:root {
+    --clr-main: #60686c;
+    --clr-1: #d62d20;
+    --clr-2: #008744;
+    --clr-3: #0057e7;
+    --clr-4: #fbbc05;
+    --clr-bc: #fff;
+
+    --main-dim: 100vmin;
+
+    --item-dim: calc(var(--main-dim) / 3.5);
+
+    --item-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.7);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+
+    font-size: calc(var(--item-dim) / 3);
+    color: #fff;
+    background-color: #fff;
+}
+
+body {
+    @include dim(100%);
+    @include flex-center;
+}
+
+.main-container {
+    @include dim(var(--main-dim));
+
+    align-self: center;
+
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+
+    z-index: 0;
+    position: relative;
+
+    background-color: var(--clr-bc);
+
+    [data-button] {
+        cursor: pointer;
+
+        @include dim(var(--item-dim));
+        @include center-self;
+        border-radius: 50%;
+        border: 0.05rem solid var(--clr-main);
+
+        &:hover {
+            box-shadow: var(--item-shadow);
+        }
+    }
+
+    [data-button="menu"] {
+        @include flex-center;
+
+        background-color: var(--clr-main);
+        position: absolute;
+
+        transition: transform 500ms;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    //Appending color vars to corresponding buttons
+    @for $i from 1 through 4 {
+        [data-button="#{$i}"] {
+            background-color: var(--clr-#{$i});
+        }
+    }
+}
+
+.blink {
+    background-color: #fff !important;
+}
+
+//It somehow works without thus I won't remove it just in case
+//keep main container in the middle on mobiles
+// @media screen and (max-width: 500px) {
+//     .main-container {
+//         // top: calc(50vh - var(--main-dim) / 2);
+//     }
+// }
