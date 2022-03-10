@@ -1,4 +1,3 @@
-// select all elements with button data attribute
 const buttons = Array.from(document.querySelectorAll("[data-button]"));
 const menuBtn = buttons[0];
 const colorBtns = buttons.slice(1);
@@ -57,7 +56,6 @@ const clrClicked = (btn) => {
       wonRound();
     }
   } else endGame();
-  // menuBtn.innerText = sequenceToGuess.length;
 };
 
 let sequence = new Array();
@@ -86,7 +84,6 @@ const wonRound = () => {
 };
 
 const gameLoop = async () => {
-  // wait 1 second
   await sleep(800);
 
   sequenceToGuess = [...sequence];
