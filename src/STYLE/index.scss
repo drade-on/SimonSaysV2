@@ -116,10 +116,8 @@ body {
     background-color: #fff !important;
 }
 
-//It somehow works without thus I won't remove it just in case
-//keep main container in the middle on mobiles
-// @media screen and (max-width: 500px) {
-//     .main-container {
-//         // top: calc(50vh - var(--main-dim) / 2);
-//     }
-// }
+@media screen and (max-width: 500px) {
+    .main-container {
+        top: calc(50vh - var(--main-dim) / 2);
+    }
+}
