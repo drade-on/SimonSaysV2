@@ -10,8 +10,15 @@ colorBtns.forEach((btn) => {
 menuBtn.addEventListener("click", () => {
   menuClicked();
 });
+menuBtn.addEventListener("mouseover", () => {
+  if (gameActive) menuBtn.innerText = "Reset";
+});
+menuBtn.addEventListener("mouseout", () => {
+  if (gameActive) menuBtn.innerText = sequence.length - colorBtns.length;
+});
+
 const menuClicked = () => {
-  if (!gameActive) startGame();
+  startGame();
 };
 const random = () => {
   return Math.floor(Math.random() * 4) + 1;
@@ -21,9 +28,10 @@ const blink = (btn, right = true, quick = false) => {
     btn.classList.add("blink");
     setTimeout(() => {
       btn.classList.remove("blink");
+      if (quick) resolve();
       setTimeout(() => {
         resolve();
-      }, 300);
+      }, 200);
     }, 400);
   });
 };
@@ -66,8 +74,8 @@ const endGame = () => {
   console.log("endGame");
   canClick = false;
   gameActive = false;
-  menuBtn.innerHTML = "wack";
-  sleep(1000).then(() => {
+  menuBtn.innerHTML = "X";
+  sleep(800).then(() => {
     menuBtn.innerHTML = "Start";
   });
 };
@@ -79,7 +87,7 @@ const wonRound = () => {
 
 const gameLoop = async () => {
   // wait 1 second
-  await sleep(1000);
+  await sleep(800);
 
   sequenceToGuess = [...sequence];
   canClick = false;

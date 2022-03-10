@@ -16,18 +16,6 @@
     height: $value;
 }
 
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 :root {
     --clr-main: #60686c;
     --clr-1: #d62d20;
@@ -68,6 +56,9 @@ body {
 
 .main-container {
     @include dim(var(--main-dim));
+
+    //center for screens slimer than wider
+    top: calc(50vh - var(--main-dim) / 2);
 
     align-self: center;
 
@@ -114,10 +105,4 @@ body {
 
 .blink {
     background-color: #fff !important;
-}
-
-@media screen and (max-width: 500px) {
-    .main-container {
-        top: calc(50vh - var(--main-dim) / 2);
-    }
 }

@@ -1,15 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 :root {
   --clr-main: #60686c;
   --clr-1: #d62d20;
@@ -50,6 +39,7 @@ body {
 .main-container {
   width: var(--main-dim);
   height: var(--main-dim);
+  top: calc(50vh - var(--main-dim) / 2);
   align-self: center;
   display: grid;
   grid-template: 1fr 1fr/1fr 1fr;
