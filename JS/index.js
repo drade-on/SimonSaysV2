@@ -23,6 +23,7 @@ const menuClicked = () => {
 const random = () => {
     return Math.floor(Math.random() * 4) + 1;
 };
+
 const blink = (btn, right = true, quick = false) => {
     return new Promise((resolve, reject) => {
         btn.classList.add("blink");
@@ -36,6 +37,7 @@ const blink = (btn, right = true, quick = false) => {
         }, 400);
     });
 };
+
 const sleep = (time) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -43,6 +45,7 @@ const sleep = (time) => {
         }, time);
     });
 };
+
 let canClick = false;
 const clrClicked = (btn) => {
     if (!canClick)
@@ -53,13 +56,13 @@ const clrClicked = (btn) => {
     if (clr === pressed) {
         console.log("correct");
         blink(btn);
-        if (sequenceToGuess.length === 0) {
+        if (sequenceToGuess.length === 0)
             wonRound();
-        }
     }
     else
         endGame();
 };
+
 let sequence = new Array();
 let sequenceToGuess = new Array();
 let gameActive = false;
